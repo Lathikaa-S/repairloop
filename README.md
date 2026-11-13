@@ -1,5 +1,7 @@
 # RepairLoop
 
+[GitHub repository](https://github.com/Lathikaa-S/repairloop) · [Passing application CI](https://github.com/Lathikaa-S/repairloop/actions/runs/43436998765)
+
 An electronics repair studio: book a repair, upload device photos, pay a booking fee, follow real-time progress, maintain care guides, and ask an AI repair-intake assistant for safe next steps.
 
 ![RepairLoop desktop preview](docs/desktop-preview.jpg)

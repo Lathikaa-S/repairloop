@@ -30,11 +30,11 @@ Screenshots: [desktop](docs/desktop-preview.jpg), [phone](docs/mobile-preview.jp
 - **Google:** authorization-code flow, state, verified profile and account-linking refusal implemented. No live account login executed because OAuth credentials were not supplied.
 - **OpenAI:** Responses tool loop, strict structured output, embeddings retrieval, streaming and usage accounting implemented; deterministic provider-contract tests passed. No live provider requests, embedding index, or LLM-quality evaluation executed because an API key was not supplied.
 - **Public hosting:** deployment recipe exists; no public frontend/backend deployment URL has been created. Local production mode is not public deployment.
-- **Docker:** Dockerfile and Compose configuration provided. Local Docker application has no working executable/engine, so local image build/run could not be verified. GitHub Actions includes a Docker build; consult its actual result below or in Actions.
+- **Docker:** Dockerfile and Compose configuration provided. Local Docker application has no working executable/engine. GitHub Actions successfully built AND ran the production image against real PostgreSQL, MongoDB and Redis containers; health, SSR, browser assets, CSP and unauthorized API rejection all passed.
 
 ## GitHub validation
 
-GitHub Actions runs dependency installation, Prisma generation/migrations, the test suite, real-service integration, production builds, coverage-map validation, audit, and Docker image build. Its link/result will be recorded after the first push. A CI Docker build proves image construction, not that a deployed container successfully serves all integrations.
+GitHub Actions runs dependency installation, Prisma generation/migrations, the test suite, real-service integration, production builds, coverage-map validation, audit, Docker image build, and production-container runtime checks. The [verified run](https://github.com/Lathikaa-S/repairloop/actions/runs/43436998765) passed on application commit `7ae45a5df03e11ac02965df38b4288bc5ea395c4`, including image build and production-container smoke checks. Later documentation-only commits do not change that tested application code. This proves container execution in CI, not public hosting or provider credential acceptance.
 
 ## Important interpretation
 
