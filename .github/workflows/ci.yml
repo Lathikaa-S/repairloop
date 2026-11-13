@@ -1,0 +1,35 @@
+name: Validate RepairLoop
+on: [push, pull_request]
+jobs:
+  application:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env: {POSTGRES_USER: repairloop, POSTGRES_PASSWORD: test_only, POSTGRES_DB: repairloop_test}
+        ports: [5432:5432]
+        options: --health-cmd "pg_isready -U repairloop" --health-interval 5s --health-retries 15
+      mongo:
+        image: mongo:7
+        ports: [27017:27017]
+      redis:
+        image: redis:7-alpine
+        ports: [6379:6379]
+    env:
+      DATABASE_URL: postgresql://repairloop:test_only@localhost:5432/repairloop_test
+      MONGODB_URI: mongodb://localhost:27017/repairloop_test
+      REDIS_URL: redis://localhost:6379/15
+      JWT_SECRET: ci-only-not-a-production-secret-123456789
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - run: npm ci
+      - run: npm run db:generate
+      - run: npm run db:migrate
+      - run: npm test
+      - run: npm run test:integration
+      - run: npm run build
+      - run: npm run check:coverage
+      - run: npm audit --audit-level=high
+      - run: docker build -t repairloop:ci .

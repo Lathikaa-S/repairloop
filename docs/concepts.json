@@ -1,0 +1,821 @@
+[
+  {
+    "id": 1,
+    "bucket": "Frontend",
+    "concept": "React component composition",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Compose Field/Button/Notice into Login and Repairs; change one shared component.",
+    "question": "Why is composition preferable to duplicating each form control?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 2,
+    "bucket": "Frontend",
+    "concept": "State management with useState",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Type in the booking form and see state-controlled values.",
+    "question": "Why must React state updates use setters?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 3,
+    "bucket": "Frontend",
+    "concept": "Side effects with useEffect",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Open My repairs; observe socket subscription and its cleanup return.",
+    "question": "What happens if the effect never disconnects its socket?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 4,
+    "bucket": "Frontend",
+    "concept": "Async data fetching from API",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "client/api.js"
+    ],
+    "demo": "Create a booking and inspect the fetch request and status check.",
+    "question": "Why does fetch require checking response.ok?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 5,
+    "bucket": "Frontend",
+    "concept": "Loading & error UI states",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Submit a wrong login and observe busy/error feedback.",
+    "question": "How do loading, empty and error states differ?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 6,
+    "bucket": "Frontend",
+    "concept": "Form handling \u2014 controlled inputs",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Trace form values from onChange to the submit payload.",
+    "question": "What makes an input controlled?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 7,
+    "bucket": "Frontend",
+    "concept": "Form validation",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Submit a short issue; inspect minLength and server 422 validation.",
+    "question": "Why is browser validation insufficient?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 8,
+    "bucket": "Frontend",
+    "concept": "Client-side routing",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "client/App.jsx"
+    ],
+    "demo": "Navigate Overview \u2192 My repairs \u2192 Care guides without full reload.",
+    "question": "Why does SSR still need server route handling?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 9,
+    "bucket": "Frontend",
+    "concept": "Responsive layout & styling competence",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "client/styles.css"
+    ],
+    "demo": "Resize to phone/tablet/desktop and inspect grids and navigation.",
+    "question": "How do breakpoints affect layout without hiding essential actions?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 10,
+    "bucket": "Frontend",
+    "concept": "Frontend deployment",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "render.yaml"
+    ],
+    "demo": "Build browser assets, serve them through Express; then deploy and record URL.",
+    "question": "What evidence proves deployment beyond a configuration file?",
+    "status": "Deployment recipe; public hosting not verified"
+  },
+  {
+    "id": 11,
+    "bucket": "Backend & System Design",
+    "concept": "Problem modeling",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "PRD.md"
+    ],
+    "demo": "Trace user problems to booking/payment/status acceptance criteria.",
+    "question": "Why is the booking fee separate from a final parts quote?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 12,
+    "bucket": "Backend & System Design",
+    "concept": "System design basics: Frontend, backend, DB and other systems integration",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "HLD.md"
+    ],
+    "demo": "Follow browser \u2192 Express \u2192 SQL/Mongo/Redis and external providers.",
+    "question": "Why are responsibilities split across these components?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 13,
+    "bucket": "Backend & System Design",
+    "concept": "RESTful endpoint design",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Inspect resource-oriented GET/POST/PATCH/PUT/DELETE routes.",
+    "question": "Why is a status update PATCH and article replacement PUT?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 14,
+    "bucket": "Backend & System Design",
+    "concept": "HTTP status codes used correctly",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Trigger 401, 403, 404, 409, 413, 415 and 422 responses.",
+    "question": "Why should missing authentication differ from insufficient permission?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 15,
+    "bucket": "Backend & System Design",
+    "concept": "Request body validation",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/security.js"
+    ],
+    "demo": "Attempt to add amountPaise or role to a strict input object.",
+    "question": "How does rejecting unknown fields prevent mass assignment?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 16,
+    "bucket": "Backend & System Design",
+    "concept": "Server-side error handling",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Follow the centralized error middleware and request ID.",
+    "question": "What should be logged versus returned to a customer?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 17,
+    "bucket": "Backend & System Design",
+    "concept": "Middleware",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Trace request ID \u2192 parser \u2192 Origin check \u2192 auth \u2192 staff middleware.",
+    "question": "Why does middleware order matter for webhooks and uploads?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 18,
+    "bucket": "Backend & System Design",
+    "concept": "File upload handling",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Upload PNG/JPEG, reject SVG/oversize, test protected download.",
+    "question": "Why check bytes, randomize names and authorize downloads?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 19,
+    "bucket": "Backend & System Design",
+    "concept": "Backend deployment",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "render.yaml"
+    ],
+    "demo": "Run production entrypoint and health checks; deploy with secrets and persistent disk.",
+    "question": "Why is a long-lived Node host needed for this design?",
+    "status": "Deployment recipe; public hosting not verified"
+  },
+  {
+    "id": 20,
+    "bucket": "NoSQL (Mongo)",
+    "concept": "Schema modeling (Mongo)",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/knowledge.js"
+    ],
+    "demo": "Inspect Article and Usage schemas and bounded metadata.",
+    "question": "What validation belongs in Mongoose versus the route schema?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 21,
+    "bucket": "NoSQL (Mongo)",
+    "concept": "CRUD operations (Mongo)",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/knowledge.js"
+    ],
+    "demo": "Staff creates, reads, edits and deletes a care guide.",
+    "question": "How are missing IDs and invalid document IDs handled?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 22,
+    "bucket": "NoSQL (Mongo)",
+    "concept": "Embedding vs referencing relationships",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/knowledge.js"
+    ],
+    "demo": "Compare embedded tags/revision with referenced SQL authorId.",
+    "question": "What is lost when a reference crosses databases?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 23,
+    "bucket": "NoSQL (Mongo)",
+    "concept": "Aggregation pipelines",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/knowledge.js"
+    ],
+    "demo": "Inspect tag $unwind \u2192 $group \u2192 $sort and usage grouping.",
+    "question": "How does unwinding change the number of pipeline records?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 24,
+    "bucket": "NoSQL (Mongo)",
+    "concept": "Indexing for query performance (Mongo)",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/knowledge.js"
+    ],
+    "demo": "Inspect compound and text indexes; explain an actual query plan.",
+    "question": "What is the write/storage cost of each index?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 25,
+    "bucket": "SQL (Postgres)",
+    "concept": "Relational schema design with PK/FK",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "prisma/schema.prisma"
+    ],
+    "demo": "Trace User \u2192 Booking \u2192 Service and one-to-one Payment.",
+    "question": "How do PK, FK and unique constraints differ?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 26,
+    "bucket": "SQL (Postgres)",
+    "concept": "SQL JOINs",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/store.js"
+    ],
+    "demo": "Run report() and inspect LEFT JOIN Service/Booking/Payment.",
+    "question": "Why keep services with zero bookings in the report?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 27,
+    "bucket": "SQL (Postgres)",
+    "concept": "Indexing for query performance (SQL)",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "prisma/schema.prisma"
+    ],
+    "demo": "Inspect userId/createdAt and status/updatedAt indexes.",
+    "question": "Why does column order in a compound index matter?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 28,
+    "bucket": "SQL (Postgres)",
+    "concept": "Filtering, ordering, grouping",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/store.js"
+    ],
+    "demo": "Trace cancellation filter, GROUP BY service and ORDER BY bookings.",
+    "question": "How do WHERE and GROUP BY affect the report?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 29,
+    "bucket": "SQL (Postgres)",
+    "concept": "Normalization basics",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "prisma/schema.prisma"
+    ],
+    "demo": "Explain separate User, Service, Booking, Payment and Event tables.",
+    "question": "Why is amountPaise an intentional snapshot rather than bad duplication?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 30,
+    "bucket": "SQL (Postgres)",
+    "concept": "ORM usage (Prisma/Sequelize)",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/store.js"
+    ],
+    "demo": "Trace Prisma create/findMany/include/$transaction calls.",
+    "question": "What does an ORM simplify and what SQL knowledge is still needed?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 31,
+    "bucket": "SQL (Postgres)",
+    "concept": "Transactions",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/store.js"
+    ],
+    "demo": "Run duplicate payment integration test and inspect atomic event write.",
+    "question": "What happens if event insertion fails halfway through the transaction?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 32,
+    "bucket": "Auth & Security",
+    "concept": "Password hashing",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Trace bcrypt hash on register and compare on login.",
+    "question": "Why can a password hash not be used as encryption?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 33,
+    "bucket": "Auth & Security",
+    "concept": "JWT issuance & verification",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/security.js"
+    ],
+    "demo": "Inspect sign/verify issuer, audience, expiry and allowed algorithm.",
+    "question": "Why reload the user role instead of trusting a client role?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 34,
+    "bucket": "Auth & Security",
+    "concept": "Role-based authorization checks",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Customer attempts staff status update and receives 403.",
+    "question": "Why is hiding the technician page not authorization?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 35,
+    "bucket": "Auth & Security",
+    "concept": "OAuth / 3rd-party login",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/oauth.js"
+    ],
+    "demo": "Configure Google callback, inspect state/cache/code exchange and verified profile.",
+    "question": "Why refuse automatic password-account linking by email?",
+    "status": "Implemented; Google credentials and live login required"
+  },
+  {
+    "id": 36,
+    "bucket": "Auth & Security",
+    "concept": "Input sanitization & injection awareness",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/security.js"
+    ],
+    "demo": "Reject Mongo operator objects; inspect parameterized SQL and React escaping.",
+    "question": "Why is sanitization context-specific rather than stripping all punctuation?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 37,
+    "bucket": "Auth & Security",
+    "concept": "Rate limiting",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "server/app.js"
+    ],
+    "demo": "Inspect API, login and assistant rate-limit policies.",
+    "question": "What changes when the app runs on multiple replicas?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 38,
+    "bucket": "AI App Eng",
+    "concept": "LLM API integration",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Configure API key; call Responses and handle provider failure.",
+    "question": "Why must API keys stay on the server?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 39,
+    "bucket": "AI App Eng",
+    "concept": "Prompt engineering",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Inspect SYSTEM, user content and retrieved-context boundaries.",
+    "question": "Why separate instructions from untrusted evidence?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 40,
+    "bucket": "AI App Eng",
+    "concept": "Structured outputs",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Inspect strict JSON schema and final Zod validation.",
+    "question": "Does valid JSON establish a correct answer?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 41,
+    "bucket": "AI App Eng",
+    "concept": "Streaming responses",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Observe actual provider text deltas through SSE and final validated object.",
+    "question": "Why can network chunks split an SSE event?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 42,
+    "bucket": "AI App Eng",
+    "concept": "Function calling / tool use",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Trigger guide lookup and own-booking lookup with strict tool arguments.",
+    "question": "Why should the model never supply the authorization identity?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 43,
+    "bucket": "AI App Eng",
+    "concept": "RAG \u2014 embeddings & vector retrieval",
+    "mandatory": false,
+    "points": 0.5,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Run ai:index, embed a query and rank compatible Mongo vectors by cosine.",
+    "question": "Why is this exact scan not a scalable ANN index?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 44,
+    "bucket": "AI App Eng",
+    "concept": "LLM eval sets",
+    "mandatory": false,
+    "points": 0.5,
+    "files": [
+      "tests/ai-evals.json"
+    ],
+    "demo": "Run ai:eval and review safety/privacy/quality cases and failures.",
+    "question": "Why are keyword checks insufficient for a complete LLM evaluation?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 45,
+    "bucket": "AI App Eng",
+    "concept": "Prompt injection awareness & defenses",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Try instruction override requests and inspect read-only tool limits.",
+    "question": "Which defenses remain effective if the model follows malicious text?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 46,
+    "bucket": "AI App Eng",
+    "concept": "Token & cost monitoring",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Inspect per-call usage logs, null unknown prices and staff totals.",
+    "question": "Why can estimated cost differ from the provider invoice?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 47,
+    "bucket": "AI App Eng",
+    "concept": "Multi-step agent",
+    "mandatory": false,
+    "points": 1.0,
+    "files": [
+      "server/ai.js"
+    ],
+    "demo": "Trace up to three model/tool iterations followed by structured streaming.",
+    "question": "Why bound steps and tool counts even for read-only agents?",
+    "status": "Implemented; live provider/index/eval verification required"
+  },
+  {
+    "id": 48,
+    "bucket": "Engineering Practices",
+    "concept": "Git workflow",
+    "mandatory": true,
+    "points": 0.3,
+    "files": [
+      ".github/workflows/ci.yml"
+    ],
+    "demo": "Inspect commits, branch workflow and the CI run for this repository.",
+    "question": "How would you isolate a change and review it before merging?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 49,
+    "bucket": "Engineering Practices",
+    "concept": "Environment variables & secrets management",
+    "mandatory": true,
+    "points": 0.2,
+    "files": [
+      ".env.example"
+    ],
+    "demo": "Copy placeholders locally; inspect gitignore and production guards.",
+    "question": "What do you do if a real secret is accidentally committed?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 50,
+    "bucket": "Engineering Practices",
+    "concept": "Writing unit tests",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "tests/security.test.js"
+    ],
+    "demo": "Run deterministic tests for signatures, schemas, ownership and JS ordering.",
+    "question": "What makes a test useful beyond mirroring the code?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 51,
+    "bucket": "Engineering Practices",
+    "concept": "Containerization with Docker",
+    "mandatory": false,
+    "points": 0.5,
+    "files": [
+      "Dockerfile"
+    ],
+    "demo": "Build multi-stage image; run Compose app and health-checked dependencies.",
+    "question": "How do image layers, volumes and environment variables differ?",
+    "status": "Docker recipe; see CI and verification report"
+  },
+  {
+    "id": 52,
+    "bucket": "Engineering Practices",
+    "concept": "Automated API testing / integration tests",
+    "mandatory": false,
+    "points": 0.2,
+    "files": [
+      "tests/integration.test.js"
+    ],
+    "demo": "Run HTTP tests plus real SQL/Mongo/Redis integration tests.",
+    "question": "Which failures can a mock adapter hide?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 53,
+    "bucket": "System & Integration",
+    "concept": "Caching with Redis",
+    "mandatory": false,
+    "points": 0.4,
+    "files": [
+      "server/cache.js"
+    ],
+    "demo": "Observe catalog MISS then HIT and Redis expiry test.",
+    "question": "What can become stale and how is its lifetime bounded?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 54,
+    "bucket": "System & Integration",
+    "concept": "WebSocket / real-time communication",
+    "mandatory": false,
+    "points": 0.5,
+    "files": [
+      "server/index.js"
+    ],
+    "demo": "Use customer/staff sessions; update repair and observe live refetch.",
+    "question": "Why are socket rooms assigned by the server?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 55,
+    "bucket": "System & Integration",
+    "concept": "Scheduled jobs / cron",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "server/index.js"
+    ],
+    "demo": "Age a READY booking in a test; run reminders twice with one event.",
+    "question": "How do idempotency and scheduling differ?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 56,
+    "bucket": "System & Integration",
+    "concept": "Server-side rendering",
+    "mandatory": false,
+    "points": 0.5,
+    "files": [
+      "client/entry-server.jsx"
+    ],
+    "demo": "Fetch raw HTML and find service titles before JS executes.",
+    "question": "How does hydration differ from rendering a client-only app?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 57,
+    "bucket": "System & Integration",
+    "concept": "Payment gateway integration",
+    "mandatory": false,
+    "points": 0.5,
+    "files": [
+      "server/payments.js"
+    ],
+    "demo": "Create Razorpay test order, checkout, capture verify, and signed webhook.",
+    "question": "Why is the browser callback alone not trustworthy evidence of payment?",
+    "status": "Implemented; mock/signature tests; provider test checkout required"
+  },
+  {
+    "id": 58,
+    "bucket": "System & Integration",
+    "concept": "3rd-party API integration",
+    "mandatory": false,
+    "points": 0.3,
+    "files": [
+      "server/payments.js"
+    ],
+    "demo": "Trace authenticated Razorpay HTTP requests, timeout and error mapping.",
+    "question": "What should happen when an upstream service is unavailable?",
+    "status": "Implemented; mock/signature tests; provider test checkout required"
+  },
+  {
+    "id": 59,
+    "bucket": "Frontend",
+    "concept": "JavaScript \u2014 Event loop",
+    "mandatory": true,
+    "points": 0.1,
+    "files": [
+      "client/js-lab.js"
+    ],
+    "demo": "Run Learning lab and predict sync \u2192 microtask \u2192 timer order.",
+    "question": "Why does setTimeout(...,0) not run immediately?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 60,
+    "bucket": "Frontend",
+    "concept": "JavaScript \u2014 Promises vs callbacks",
+    "mandatory": true,
+    "points": 0.1,
+    "files": [
+      "client/js-lab.js"
+    ],
+    "demo": "Wrap a callback with a Promise; await success and reject failure.",
+    "question": "What does a Promise standardize that a callback does not?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 61,
+    "bucket": "Frontend",
+    "concept": "JavaScript \u2014 async/await",
+    "mandatory": true,
+    "points": 0.1,
+    "files": [
+      "client/api.js"
+    ],
+    "demo": "Trace async fetch \u2192 response validation \u2192 parsed result \u2192 UI update.",
+    "question": "Where should rejected promises be caught?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 62,
+    "bucket": "Frontend",
+    "concept": "JavaScript \u2014 Closures",
+    "mandatory": true,
+    "points": 0.1,
+    "files": [
+      "client/api.js"
+    ],
+    "demo": "Inspect checkout-loader closure and independent counter tests.",
+    "question": "Which variables survive after the outer function returns?",
+    "status": "Implemented; local tests/demo evidence"
+  },
+  {
+    "id": 63,
+    "bucket": "Frontend",
+    "concept": "JavaScript \u2014 Hoisting",
+    "mandatory": true,
+    "points": 0.1,
+    "files": [
+      "client/js-lab.js"
+    ],
+    "demo": "Run function-declaration, var and let temporal-dead-zone examples.",
+    "question": "Why does hoisting not mean all variables are safe to read early?",
+    "status": "Implemented; local tests/demo evidence"
+  }
+]
