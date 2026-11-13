@@ -2,6 +2,8 @@
 
 An electronics repair studio: book a repair, upload device photos, pay a booking fee, follow real-time progress, maintain care guides, and ask an AI repair-intake assistant for safe next steps.
 
+![RepairLoop desktop preview](docs/desktop-preview.jpg)
+
 Built as one assessment project covering the supplied **63-concept rubric**, including **25 mandatory concepts**. Coverage means identifiable implementation and demonstration paths—not guaranteed marks. Some external integrations require credentials and live verification. Read [VERIFICATION.md](VERIFICATION.md) before claiming evidence.
 
 ## Start here

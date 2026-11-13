@@ -33,3 +33,11 @@ jobs:
       - run: npm run check:coverage
       - run: npm audit --audit-level=high
       - run: docker build -t repairloop:ci .
+      - name: Run production container against real services
+        run: docker run --detach --name repairloop-ci --network host --env APP_MODE=live --env DATABASE_URL --env MONGODB_URI --env REDIS_URL --env JWT_SECRET --env APP_URL=http://localhost:3000 repairloop:ci
+      - run: node scripts/container-smoke.js
+      - name: Container diagnostics and cleanup
+        if: always()
+        run: |
+          docker logs repairloop-ci || true
+          docker rm -f repairloop-ci || true

@@ -150,7 +150,12 @@ export class SqlStore {
             dedupeKey: `payment:${orderId}`,
           },
         });
-      return tx.payment.findUnique({ where: { id: p.id } });
+      const recorded = await tx.payment.findUnique({ where: { id: p.id } });
+      // A competing capture may have committed while updateMany waited for its row lock.
+      // A duplicate of that payment is safe; a different capture needs reconciliation.
+      if (recorded.providerPaymentId !== paymentId)
+        throw new HttpError(409, "Different payment already recorded");
+      return recorded;
     });
   }
   addAttachment(data) {
