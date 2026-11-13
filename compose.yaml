@@ -1,0 +1,72 @@
+# Local integration stack. Database ports bind to loopback, never the public network.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: repairloop
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_dev_only}
+      POSTGRES_DB: repairloop
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U repairloop"]
+      interval: 5s
+      retries: 15
+  mongo:
+    image: mongo:7
+    ports: ["127.0.0.1:27017:27017"]
+    volumes: ["mongo_data:/data/db"]
+    healthcheck:
+      test:
+        ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      retries: 15
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports: ["127.0.0.1:6379:6379"]
+    volumes: ["redis_data:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 15
+  setup:
+    build:
+      context: .
+      target: build
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://repairloop:${POSTGRES_PASSWORD:-local_dev_only}@postgres:5432/repairloop?schema=public
+      MONGODB_URI: mongodb://mongo:27017/repairloop
+      REDIS_URL: redis://redis:6379
+    # Prisma CLI is retained in build dependencies until prune, so install it for this one-off job.
+    command:
+      [
+        "sh",
+        "-c",
+        "npm ci && npx prisma generate && npm run db:migrate && npm run db:seed",
+      ]
+    depends_on:
+      postgres: { condition: service_healthy }
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    profiles: ["setup"]
+  app:
+    build: .
+    env_file: .env
+    environment:
+      APP_MODE: live
+      DATABASE_URL: postgresql://repairloop:${POSTGRES_PASSWORD:-local_dev_only}@postgres:5432/repairloop?schema=public
+      MONGODB_URI: mongodb://mongo:27017/repairloop
+      REDIS_URL: redis://redis:6379
+    ports: ["3000:3000"]
+    volumes: ["uploads:/app/uploads"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+volumes:
+  postgres_data:
+  mongo_data:
+  redis_data:
+  uploads:

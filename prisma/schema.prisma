@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+// 3NF: users and services are stored once. Bookings reference their primary keys.
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  name String
+  passwordHash String?
+  googleId String? @unique
+  role String @default("CUSTOMER")
+  bookings Booking[]
+  createdAt DateTime @default(now())
+}
+model Service {
+  id String @id
+  name String
+  category String
+  description String
+  pricePaise Int
+  durationMinutes Int
+  bookings Booking[]
+}
+model Booking {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  serviceId String
+  service Service @relation(fields: [serviceId], references: [id])
+  device String
+  issue String
+  status String @default("REQUESTED")
+  // Snapshot of the agreed price: historical orders must not change with the catalog.
+  amountPaise Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  payment Payment?
+  events BookingEvent[]
+  attachments Attachment[]
+  @@index([userId, createdAt])
+  @@index([status, updatedAt])
+}
+model Payment {
+  id String @id @default(uuid())
+  bookingId String @unique
+  booking Booking @relation(fields: [bookingId], references: [id])
+  providerOrderId String @unique
+  providerPaymentId String? @unique
+  status String @default("CREATED")
+  amountPaise Int
+  currency String @default("INR")
+}
+model BookingEvent {
+  id String @id @default(uuid())
+  bookingId String
+  booking Booking @relation(fields: [bookingId], references: [id])
+  kind String
+  message String
+  dedupeKey String? @unique
+  createdAt DateTime @default(now())
+  @@index([bookingId, createdAt])
+}
+model Attachment {
+  id String @id @default(uuid())
+  bookingId String
+  booking Booking @relation(fields: [bookingId], references: [id])
+  filename String @unique
+  mime String
+  size Int
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,39 @@
+# One Node service serves the built React frontend, SSR, REST, SSE and WebSockets.
+# Supply MongoDB and Redis connection URLs; this file does not create those accounts.
+services:
+  - type: web
+    name: repairloop
+    runtime: node
+    buildCommand: npm ci && npm run db:generate && npm run build
+    preDeployCommand: npm run db:migrate
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: repairloop-uploads
+      mountPath: /opt/render/project/src/uploads
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_MODE
+        value: live
+      - key: TRUST_PROXY
+        value: "1"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
